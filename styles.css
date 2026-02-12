@@ -226,6 +226,8 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-links li {
