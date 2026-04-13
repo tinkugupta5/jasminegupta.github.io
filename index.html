@@ -35,13 +35,13 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#activities">Activities</a></li>
                     <li>
-                    <a href="#reels">
-                        Work
-                        <span class="new-badge">
-                            <span class="dot"></span>
-                            New
-                        </span>
-                    </a>
+                        <a href="#reels">
+                            Work
+                            <span class="new-badge">
+                                <span class="dot"></span>
+                                New
+                            </span>
+                        </a>
                     </li>
 
                     <li><a href="#contact">Contact</a></li>
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="hero-image fade-in">
-                    <img src="./images/jasmine.png" alt="Jasmine Gupta">
+                    <img src="./images/jasmine.png" alt="Jasmine Gupta" loading="lazy">
                 </div>
             </div>
         </div>
@@ -156,13 +156,33 @@
             <h2 class="section-title fade-in">Technical Experience</h2>
 
             <div class="experience-container">
+
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Social Media Manager & Content Creator</h3>
+                            <div class="experience-company">
+                                <a href="https://www.nurepublic.co/" target="_blank">Nu Republic</a>, Gurugram, India
+                            </div>
+                        </div>
+                        <span class="experience-date">March 2026 - Present</span>
+                    </div>
+                    <ul>
+                        <li>Manage social media platforms including content creation, strategy, and daily posting.</li>
+                        <li>Develop and execute content strategies aligned with brand goals and audience engagement.
+                        </li>
+                        <li>Handle influencer marketing campaigns, including outreach, coordination, and performance
+                            tracking.</li>
+                        <li>Create and edit engaging video content optimized for social media platforms.</li>
+                    </ul>
+                </div>
                 <div class="experience-card fade-in">
                     <div class="experience-header">
                         <div>
                             <h3 class="experience-title">Social Media Manager & Content Creator</h3>
                             <div class="experience-company">The Chili Lime Media, New Delhi, India</div>
                         </div>
-                        <span class="experience-date">Aug 2025 — Present</span>
+                        <span class="experience-date">July 2025 - Feb 2026</span>
                     </div>
                     <ul>
                         <li>Lead end-to-end social media strategy and content execution for 14 brands across fashion,
@@ -176,13 +196,15 @@
                     </ul>
                 </div>
 
+
+
                 <div class="experience-card fade-in">
                     <div class="experience-header">
                         <div>
                             <h3 class="experience-title">Brand Campaign & Portfolio Management</h3>
                             <div class="experience-company">chivri_com (Concurrent Projects)</div>
                         </div>
-                        <span class="experience-date">Aug 2025 — Present</span>
+                        <span class="experience-date">July 2025 - Feb 2026</span>
                     </div>
                     <ul>
                         <li>Planned and executed platform-specific strategies for multiple active brand accounts.</li>
@@ -198,7 +220,7 @@
                             <h3 class="experience-title">Influencer Marketing & Community Growth</h3>
                             <div class="experience-company">bluace.in, India</div>
                         </div>
-                        <span class="experience-date">Aug 2025 — Present</span>
+                        <span class="experience-date">July 2025 - Feb 2026</span>
                     </div>
                     <ul>
                         <li>Led influencer outreach, onboarding, and collaboration planning to expand organic reach.
@@ -215,7 +237,7 @@
                             <h3 class="experience-title">Influencer Marketing & Community Growth</h3>
                             <div class="experience-company">trehbella, India</div>
                         </div>
-                        <span class="experience-date">Aug 2025 — Present</span>
+                        <span class="experience-date">July 2025 - Feb 2026</span>
                     </div>
                     <ul>
                         <li>Led influencer outreach, onboarding, and collaboration planning to expand organic reach.
@@ -613,8 +635,34 @@
                 document.querySelector('.header-container').style.padding = '20px';
             }
         });
+
+        // Lazy load Instagram embeds
+        const reelsSection = document.getElementById('reels');
+        let instagramScriptLoaded = false;
+
+        const loadInstagramScript = () => {
+            if (!instagramScriptLoaded) {
+                const script = document.createElement('script');
+                script.src = 'https://www.instagram.com/embed.js';
+                script.async = true;
+                document.body.appendChild(script);
+                instagramScriptLoaded = true;
+            }
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    loadInstagramScript();
+                    observer.disconnect();
+                }
+            });
+        });
+
+        if (reelsSection) {
+            observer.observe(reelsSection);
+        }
     </script>
-    <script async src="https://www.instagram.com/embed.js"></script>
 
 </body>
 
